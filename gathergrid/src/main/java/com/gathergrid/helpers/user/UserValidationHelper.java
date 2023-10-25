@@ -15,7 +15,6 @@ import com.gathergrid.exceptions.costums.ValidationException;
 import com.gathergrid.repository.UserRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
