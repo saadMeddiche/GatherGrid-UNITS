@@ -2,6 +2,7 @@ package com.gathergrid.helpers.user;
 
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import com.gathergrid.embeddables.AddressEmail;
@@ -142,7 +143,7 @@ public class UserValidationHelper {
     }
 
     protected boolean passwordsAreNotMatched(String givedPassword, String fetchedPassword) {
-        return !givedPassword.equals(fetchedPassword);
+        return (givedPassword == null || fetchedPassword == null) ? true : !givedPassword.equals(fetchedPassword);
     }
 
     protected boolean userNameAlreadyExists(String userName) {
