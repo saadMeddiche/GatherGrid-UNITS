@@ -118,6 +118,7 @@ class UserValidationHelperTest {
                 userValidationHelper.validateUser(user);
             });
         }
+        
 
         @Test
         public void shouldThrowAlreadyExistsExceptionWhenUserNameAlreadyExists() {
