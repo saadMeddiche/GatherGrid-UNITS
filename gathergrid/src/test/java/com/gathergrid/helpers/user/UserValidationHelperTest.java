@@ -14,16 +14,16 @@ class UserValidationHelperTest {
     UserValidationHelper userValidationHelper;
 
     @BeforeEach
-    public void setRepositoryAndUserValidationHelper() {
+    public void setUpRepositoryAndUserValidationHelper() {
         userRepository = mock(UserRepository.class);
         userValidationHelper = new UserValidationHelper(userRepository);
     }
 
     @Nested
     class NoUserHasThisEmail {
+
         @Test
-        public void testNoUserHasThisEmailWithEmailExists() {
-            
+        public void shouldReturnFalseWhenEmailExists() {
             when(userRepository.existsByEmail("saadmeddiche2004201@gmail.com")).thenReturn(true);
 
             boolean result = userValidationHelper.noUserHasThisEmail("saadmeddiche2004201@gmail.com");
@@ -32,68 +32,66 @@ class UserValidationHelperTest {
         }
 
         @Test
-        public void testNoUserHasThisEmailWithEmailDoesNotExist() {
-
+        public void shouldReturnTrueWhenEmailDoesNotExist() {
             when(userRepository.existsByEmail("notARealEmail@gmail.com")).thenReturn(false);
 
             boolean result = userValidationHelper.noUserHasThisEmail("notARealEmail@gmail.com");
 
             assertTrue(result); 
-    
         }
     }
 
     @Nested
-    class passwordsAreNotMatched {
+    class PasswordsAreNotMatched {
+
         @Test
-        public void testPasswordsAreNotMatchedWhenMatched() {
-            String givedPassword = "password#2004";
+        public void shouldReturnFalseWhenPasswordsMatch() {
+            String givenPassword = "password#2004";
             String fetchedPassword = "password#2004";
 
-            boolean result = userValidationHelper.passwordsAreNotMatched(givedPassword, fetchedPassword);
+            boolean result = userValidationHelper.passwordsAreNotMatched(givenPassword, fetchedPassword);
 
             assertFalse(result);
         }
 
         @Test
-        public void testPasswordsAreNotMatchedWhenNotMatched() {
-            String givedPassword = "password#2004";
+        public void shouldReturnTrueWhenPasswordsDoNotMatch() {
+            String givenPassword = "password#2004";
             String fetchedPassword = "password#2003";
 
-            boolean result = userValidationHelper.passwordsAreNotMatched(givedPassword, fetchedPassword);
+            boolean result = userValidationHelper.passwordsAreNotMatched(givenPassword, fetchedPassword);
 
             assertTrue(result);
         }
 
         @Test
-        public void testPasswordsAreNotMatchedWhenGivedPasswordNull() {
-            String givedPassword = null;
+        public void shouldReturnTrueWhenGivenPasswordIsNull() {
+            String givenPassword = null;
             String fetchedPassword = "password#2003";
 
-            boolean result = userValidationHelper.passwordsAreNotMatched(givedPassword, fetchedPassword);
+            boolean result = userValidationHelper.passwordsAreNotMatched(givenPassword, fetchedPassword);
 
             assertTrue(result);
         }
 
         @Test
-        public void testPasswordsAreNotMatchedWhenFetchedPasswordNull() {
-            String givedPassword = "password#2004";
+        public void shouldReturnTrueWhenFetchedPasswordIsNull() {
+            String givenPassword = "password#2004";
             String fetchedPassword = null;
 
-            boolean result = userValidationHelper.passwordsAreNotMatched(givedPassword, fetchedPassword);
+            boolean result = userValidationHelper.passwordsAreNotMatched(givenPassword, fetchedPassword);
 
             assertTrue(result);
         }
 
         @Test
-        public void testPasswordsAreNotMatchedWhenEmpty() {
-            String givedPassword = "";
+        public void shouldReturnTrueWhenPasswordsAreEmpty() {
+            String givenPassword = "";
             String fetchedPassword = "password#2004";
 
-            boolean result = userValidationHelper.passwordsAreNotMatched(givedPassword, fetchedPassword);
+            boolean result = userValidationHelper.passwordsAreNotMatched(givenPassword, fetchedPassword);
 
             assertTrue(result);
         }
     }
-
 }
