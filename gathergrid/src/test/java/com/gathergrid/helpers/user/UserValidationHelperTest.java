@@ -1,5 +1,6 @@
 package com.gathergrid.helpers.user;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -9,15 +10,20 @@ import static org.mockito.Mockito.*;
 
 class UserValidationHelperTest {
 
-    private UserRepository userRepository = mock(UserRepository.class);
+    UserRepository userRepository;
+    UserValidationHelper userValidationHelper;
 
-    private UserValidationHelper userValidationHelper = new UserValidationHelper(userRepository);
+    @BeforeEach
+    public void setRepositoryAndUserValidationHelper() {
+        userRepository = mock(UserRepository.class);
+        userValidationHelper = new UserValidationHelper(userRepository);
+    }
 
     @Nested
     class NoUserHasThisEmail {
         @Test
         public void testNoUserHasThisEmailWithEmailExists() {
-
+            
             when(userRepository.existsByEmail("saadmeddiche2004201@gmail.com")).thenReturn(true);
 
             boolean result = userValidationHelper.noUserHasThisEmail("saadmeddiche2004201@gmail.com");
