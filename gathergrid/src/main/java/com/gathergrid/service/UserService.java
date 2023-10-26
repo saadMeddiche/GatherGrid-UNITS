@@ -12,7 +12,7 @@ public class UserService extends UserValidationHelper {
     public UserService() {
         super(new UserRepository());
     }
-
+    
     /**
      * Registers a user.
      *

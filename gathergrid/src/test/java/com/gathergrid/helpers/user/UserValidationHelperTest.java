@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 
+
 import com.gathergrid.entities.User;
 import com.gathergrid.exceptions.costums.AlreadyExistsException;
 import com.gathergrid.exceptions.costums.ValidationException;
@@ -17,10 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-class UserValidationHelperTest {
+
+public class UserValidationHelperTest {
 
     UserRepository userRepository;
-    
+
     UserValidationHelper userValidationHelper;
 
     @BeforeEach
@@ -64,7 +66,8 @@ class UserValidationHelperTest {
     class PasswordsAreNotMatched {
 
         /**
-         * Test case to verify that the 'passwordsAreNotMatched' function returns false when the given password
+         * Test case to verify that the 'passwordsAreNotMatched' function returns false
+         * when the given password
          * matches the fetched password.
          *
          */
@@ -123,7 +126,7 @@ class UserValidationHelperTest {
         }
 
         /**
-         * A test case to verify that the method 'passwordsAreNotMatched' returns true 
+         * A test case to verify that the method 'passwordsAreNotMatched' returns true
          * when the given password is empty and the fetched password is not empty.
          *
          */
@@ -172,7 +175,8 @@ class UserValidationHelperTest {
         }
 
         /**
-         * Test case to verify that the function does not throw any exception when all conditions are good.
+         * Test case to verify that the function does not throw any exception when all
+         * conditions are good.
          */
         @Test
         public void khasNotThrowExceptionWhenAllIsGood() {
@@ -186,7 +190,8 @@ class UserValidationHelperTest {
         }
 
         /**
-         * Generates a stream of dynamic tests to validate that the function throws a ValidationException
+         * Generates a stream of dynamic tests to validate that the function throws a
+         * ValidationException
          * when some attributes of the User object are null.
          */
         @TestFactory
