@@ -16,14 +16,31 @@ public class test {
         // ==================================
         Iterator<Integer> it = numbers.iterator();
         while (it.hasNext()) {
-            if (it.next() < 10)
-                it.remove();
+            if (it.next() < 10) it.remove();
         }
         // ==================================
 
         System.out.println(numbers);
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public static void main2(String[] args) {
         ArrayList<Integer> numbers = new ArrayList<Integer>();
         numbers.add(12);
