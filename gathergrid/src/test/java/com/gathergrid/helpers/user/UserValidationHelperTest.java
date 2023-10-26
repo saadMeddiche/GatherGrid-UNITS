@@ -33,7 +33,7 @@ class UserValidationHelperTest {
     class NoUserHasThisEmail {
 
         @Test
-        public void shouldReturnFalseWhenEmailExists() {
+        public void khasReturnFalseWhenEmailExists() {
             when(userRepository.existsByEmail("saadmeddiche2004201@gmail.com")).thenReturn(true);
 
             boolean result = userValidationHelper.noUserHasThisEmail("saadmeddiche2004201@gmail.com");
@@ -42,7 +42,7 @@ class UserValidationHelperTest {
         }
 
         @Test
-        public void shouldReturnTrueWhenEmailDoesNotExist() {
+        public void khasReturnTrueWhenEmailDoesNotExist() {
             when(userRepository.existsByEmail("notARealEmail@gmail.com")).thenReturn(false);
 
             boolean result = userValidationHelper.noUserHasThisEmail("notARealEmail@gmail.com");
@@ -55,7 +55,7 @@ class UserValidationHelperTest {
     class PasswordsAreNotMatched {
 
         @Test
-        public void shouldReturnFalseWhenPasswordsMatch() {
+        public void khasReturnFalseWhenPasswordsMatch() {
             String givenPassword = "password#2004";
             String fetchedPassword = "password#2004";
 
@@ -65,7 +65,7 @@ class UserValidationHelperTest {
         }
 
         @Test
-        public void shouldReturnTrueWhenPasswordsDoNotMatch() {
+        public void khasReturnTrueWhenPasswordsDoNotMatch() {
             String givenPassword = "password#2004";
             String fetchedPassword = "password#2003";
 
@@ -75,7 +75,7 @@ class UserValidationHelperTest {
         }
 
         @Test
-        public void shouldReturnTrueWhenGivenPasswordIsNull() {
+        public void khasReturnTrueWhenGivenPasswordIsNull() {
             String givenPassword = null;
             String fetchedPassword = "password#2003";
 
@@ -85,7 +85,7 @@ class UserValidationHelperTest {
         }
 
         @Test
-        public void shouldReturnTrueWhenFetchedPasswordIsNull() {
+        public void khasReturnTrueWhenFetchedPasswordIsNull() {
             String givenPassword = "password#2004";
             String fetchedPassword = null;
 
@@ -95,7 +95,7 @@ class UserValidationHelperTest {
         }
 
         @Test
-        public void shouldReturnTrueWhenPasswordsAreEmpty() {
+        public void khasReturnTrueWhenPasswordsAreEmpty() {
             String givenPassword = "";
             String fetchedPassword = "password#2004";
 
@@ -109,7 +109,7 @@ class UserValidationHelperTest {
     class validateUser {
 
         @Test
-        public void shouldThrowAlreadyExistsExceptionWhenEmailAlreadyExists() {
+        public void khasThrowAlreadyExistsExceptionWhenEmailAlreadyExists() {
             User user = new User("Saad", "Meddiche", "SaadOun", "saadmeddiche2004201@gmail.com", "Password#2004");
             when(userRepository.existsByEmail(user.getEmail().getAddressEmail())).thenReturn(true);
             when(userRepository.existsByUsername(user.getName().getUserName())).thenReturn(false);
@@ -118,10 +118,9 @@ class UserValidationHelperTest {
                 userValidationHelper.validateUser(user);
             });
         }
-        
 
         @Test
-        public void shouldThrowAlreadyExistsExceptionWhenUserNameAlreadyExists() {
+        public void khasThrowAlreadyExistsExceptionWhenUserNameAlreadyExists() {
             User user = new User("Saad", "Meddiche", "SaadOun", "saadmeddiche2004201@gmail.com", "Password#2004");
             when(userRepository.existsByEmail(user.getEmail().getAddressEmail())).thenReturn(false);
             when(userRepository.existsByUsername(user.getName().getUserName())).thenReturn(true);
@@ -132,7 +131,7 @@ class UserValidationHelperTest {
         }
 
         @Test
-        public void shouldNotThrowExceptionWhenAllIsGood() {
+        public void khasNotThrowExceptionWhenAllIsGood() {
             User user = new User("Saad", "Meddiche", "SaadOun", "saadmeddiche2004201@gmail.com", "Password#2004");
             when(userRepository.existsByEmail(user.getEmail().getAddressEmail())).thenReturn(false);
             when(userRepository.existsByUsername(user.getName().getUserName())).thenReturn(false);
@@ -143,7 +142,7 @@ class UserValidationHelperTest {
         }
 
         @Test
-        public void shouldThrowValidationExceptionWhen() {
+        public void khasThrowValidationExceptionWhen() {
             User user = new User("Saad", "Meddiche", null, "saadmeddiche2004201@gmail.com", "Password#2004");
             when(userRepository.existsByEmail(user.getEmail().getAddressEmail())).thenReturn(false);
             when(userRepository.existsByUsername(user.getName().getUserName())).thenReturn(false);
@@ -154,7 +153,7 @@ class UserValidationHelperTest {
         }
 
         @TestFactory
-        public Stream<DynamicTest> shouldThrowValidationExceptionWhenSomeAttributesAreNull() {
+        public Stream<DynamicTest> khasThrowValidationExceptionWhenSomeAttributesAreNull() {
 
             List<User> users = new ArrayList<>();
             users.add(new User(null, "Meddiche", "SaadOun", "saadmeddiche2004201@gmail.com", "Password#2004"));
