@@ -116,7 +116,7 @@ public class EventServiceImp implements EventService {
         Categorie eventCategory = categorieRepository.findById(category);
         User loggedUser = userRepository.findById(user);
         if (loggedUser == null) {
-            return new Response("User Not Found", 403);
+            return new Response("User Not Found", 404);
         }
         if (eventCategory == null) {
             return new Response("Category Not Found", 404);
