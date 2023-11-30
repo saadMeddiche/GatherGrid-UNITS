@@ -4,11 +4,11 @@
 # The tasks that i did
 
 
-![Alt text](gathergrid\src\main\java\com\gathergrid\repository\UserRepository.java)
+![a relative link](gathergrid\src\main\java\com\gathergrid\repository\UserRepository.java)
 
-![Alt text](gathergrid\src\main\java\com\gathergrid\service\UserService.java)
+![a relative link](gathergrid\src\main\java\com\gathergrid\service\UserService.java)
 
-![Alt text](gathergrid\src\main\java\com\gathergrid\filters\AuthentificationFilter.java)
+![a relative link](gathergrid\src\main\java\com\gathergrid\filters\AuthentificationFilter.java)
 
 -- Exception Handler :
 
